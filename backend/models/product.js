@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema({
   },
   images: [
     {
-      Url: {
+      url: {
         type: String,
         required: true,
       },
@@ -27,21 +27,21 @@ const productSchema = new mongoose.Schema({
   ],
   category: {
     type: String,
-    required: [true, "Please select category for this product"],
-    enum: {
-      values: [
-        "Select Categories",
-        "Women",
-        "Men",
-        "Kids",
-        "Beauty",
-        "Electronic Device",
-        "Mobile",
-        "Accessories",
-        "Jewellery",
-      ],
-      message: "Please select correct category for product",
-    },
+    // required: [true, "Please select category for this product"],
+    // enum: {
+    //   values: [
+    //     "Select Categories",
+    //     "Women",
+    //     "Men",
+    //     "Kids",
+    //     "Beauty",
+    //     "Electronic Device",
+    //     "Mobile",
+    //     "Accessories",
+    //     "Jewellery",
+    //   ],
+    //   message: "Please select correct category for product",
+    // },
   },
   seller: {
     type: String,
@@ -57,30 +57,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  reviews: [
-    {
-      user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      rating: {
-        type: Number,
-        required: true,
-      },
-      comment: {
-        type: String,
-      },
-    },
-  ],
+
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    required: true,
   },
   createdAt: {
     type: Date,

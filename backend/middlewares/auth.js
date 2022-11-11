@@ -14,8 +14,9 @@ exports.isAuthenticatedUser = async (req, res, next) => {
     });
   }
 
-  const data = jwt.verify(token, JWT_SECRET);
-  req.user = data.user;
+  const decoded = jwt.verify(token, JWT_SECRET);
+
+  req.user = await User.findById(decoded.user.id);
   next();
 };
 exports.authorizeRoles = (...roles) => {

@@ -19,8 +19,9 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 const user = require("./routes/auth");
-
+const product = require("./routes/product");
 app.use("/api/auth", user);
+app.use("/api", product);
 // for check apis
 app.get("/api", async (req, res) => {
   try {

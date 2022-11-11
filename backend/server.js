@@ -18,6 +18,9 @@ app.use("/images", express.static("images"));
 app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
+const user = require("./routes/auth");
+
+app.use("/api/auth", user);
 // for check apis
 app.get("/api", async (req, res) => {
   try {

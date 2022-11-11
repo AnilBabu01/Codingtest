@@ -1,8 +1,8 @@
 const Product = require("../models/product");
-
+const APIFeatures = require("../utility/apiFeatures");
 const router = require("../routes/auth");
 
-//create new product api/product/new
+//create new product
 
 exports.newProduct = async (req, res, next) => {
   try {
@@ -14,4 +14,24 @@ exports.newProduct = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+// Get all products
+exports.getProducts = async (req, res, next) => {
+  const productsCount = await Product.countDocuments();
+
+  const apiFeatures = new APIFeatures(Product.find(), req.query)
+    .search()
+    .filter();
+
+  let products = await apiFeatures.query;
+  let filteredProductsCount = products.length;
+
+  // products = await apiFeatures.query;
+
+  res.status(200).json({
+    status: true,
+    filteredProductsCount,
+    products,
+  });
 };

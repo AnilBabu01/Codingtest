@@ -27,21 +27,21 @@ const productSchema = new mongoose.Schema({
   ],
   category: {
     type: String,
-    // required: [true, "Please select category for this product"],
-    // enum: {
-    //   values: [
-    //     "Select Categories",
-    //     "Women",
-    //     "Men",
-    //     "Kids",
-    //     "Beauty",
-    //     "Electronic Device",
-    //     "Mobile",
-    //     "Accessories",
-    //     "Jewellery",
-    //   ],
-    //   message: "Please select correct category for product",
-    // },
+    required: [true, "Please select category for this product"],
+    enum: {
+      values: [
+        "Select Categories",
+        "Women",
+        "Men",
+        "Kids",
+        "Beauty",
+        "Electronic Device",
+        "Mobile",
+        "Accessories",
+        "Jewellery",
+      ],
+      message: "Please select correct category for product",
+    },
   },
   seller: {
     type: String,

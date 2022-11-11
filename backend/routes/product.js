@@ -3,7 +3,7 @@ const express = require("express");
 const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
 const router = express.Router();
 
-const { newProduct } = require("../controllers/productController");
+const { newProduct, getProducts } = require("../controllers/productController");
 
 router.post(
   "/admin/product/create",
@@ -11,5 +11,5 @@ router.post(
   authorizeRoles("admin"),
   newProduct
 );
-
+router.route("/getproducts").get(getProducts);
 module.exports = router;

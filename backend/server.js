@@ -9,14 +9,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: true,
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
 
 app.use("/images", express.static("images"));
 app.use(express.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 const user = require("./routes/auth");
 const product = require("./routes/product");

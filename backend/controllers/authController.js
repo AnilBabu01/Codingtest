@@ -22,7 +22,7 @@ exports.registerUser = async (req, res) => {
     }
     const { name, email, password } = req.body;
     const salt = await bcrypt.genSalt(10);
-    const secPass = await bcrypt.hash(req.body.password, salt);
+    const secPass = await bcrypt.hash(password, salt);
     user = await User.create({
       name: name,
       email: email,
@@ -35,7 +35,12 @@ exports.registerUser = async (req, res) => {
       },
     };
     const token = jwt.sign(data, JWT_SECRET);
-    return res.status(200).json({ status: true, token: token, user: user });
+    return res.status(200).json({
+      status: true,
+      msg: "You have register Successully",
+      token: token,
+      user: user,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -71,7 +76,12 @@ exports.loginUser = async (req, res) => {
       },
     };
     const token = jwt.sign(data, JWT_SECRET);
-    return res.status(200).json({ status: true, token: token, user: user });
+    return res.status(200).json({
+      status: true,
+      msg: "You have login Successully",
+      token: token,
+      user: user,
+    });
   } catch (error) {
     console.log(error, "internal server error");
   }

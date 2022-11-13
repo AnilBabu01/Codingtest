@@ -20,7 +20,7 @@ const Home = () => {
             <section id="products" className="container mt-5">
               <div className="row">
                 {products &&
-                  products.slice(0, 4).map((product) => {
+                  products.map((product) => {
                     return (
                       <>
                         <Product key={product._id} product={product} />

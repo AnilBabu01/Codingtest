@@ -75,6 +75,7 @@ const orderSchema = mongoose.Schema({
   },
   createdAt: {
     type: Date,
+    expires: "5m",
     default: Date.now,
   },
 });

@@ -15,7 +15,7 @@ const Navbar = () => {
   const userrole = localStorage.getItem("userrole");
   const token = localStorage.getItem("testtoken");
   const { isAuthenticated } = useSelector((state) => state.auth);
-
+  const { cartItems } = useSelector((state) => state.cart);
   const logoutuser = () => {
     localStorage.removeItem("testtoken");
     dispatch(logout());
@@ -42,7 +42,7 @@ const Navbar = () => {
                   <span id="cart">
                     <ShoppingCartIcon />
                   </span>
-                  <span id="cart_count">2</span>
+                  <span id="cart_count">{cartItems.length}</span>
                 </NavLink>
               </li>
             </>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./Navbar.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, clearErrors } from "../actions/AuthAction";
 import { useAlert } from "react-alert";
 const Navbar = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
   const [isMobile, setisMobile] = useState(false);
@@ -19,6 +20,7 @@ const Navbar = () => {
     localStorage.removeItem("testtoken");
     dispatch(logout());
     alert.error("You have Logout Successsfully");
+    navigate("/");
   };
   useEffect(() => {}, [logout, isAuthenticated]);
 
@@ -65,7 +67,7 @@ const Navbar = () => {
               <li onClick={() => setisMobile(false)}>
                 <NavLink
                   onClick={logoutuser}
-                  to="/*"
+                  to="/"
                   className={({ isActive }) =>
                     isActive ? style.active : style.home
                   }

@@ -55,7 +55,7 @@ const productSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
   },
-  createdAt: { type: Date, expires: "1m", default: Date.now },
+  createdAt: { type: Date, expires: "5m", default: Date.now },
 });
 
 module.exports = mongoose.model("Product", productSchema);

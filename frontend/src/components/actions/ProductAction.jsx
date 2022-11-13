@@ -39,3 +39,30 @@ export const getProducts =
       });
     }
   };
+
+export const getProductDetails = (id) => async (dispatch) => {
+  try {
+    axios.defaults.headers.get[
+      "Authorization"
+    ] = `Bearer ${localStorage.getItem("token")}`;
+
+    axios.defaults.headers.post[
+      "Authorization"
+    ] = `Bearer ${localStorage.getItem("token")}`;
+    dispatch({ type: PRODUCT_DETAILS_REQUEST });
+
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_URL}/api/getSingleProduct/${id}`
+    );
+
+    dispatch({
+      type: PRODUCT_DETAILS_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};

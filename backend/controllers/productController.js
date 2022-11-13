@@ -17,7 +17,7 @@ exports.newProduct = async (req, res, next) => {
 };
 
 // Get all products api/getproducts?keyword=apple
-exports.getProducts = async (req, res, next) => {
+exports.getProducts = async (req, res) => {
   const productsCount = await Product.countDocuments();
 
   const apiFeatures = new APIFeatures(Product.find(), req.query)
@@ -33,4 +33,22 @@ exports.getProducts = async (req, res, next) => {
     length: products.length,
     products,
   });
+};
+
+// get single product
+
+exports.getSingleProduct = async (req, res, next) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ status: false, msg: "Product not fund" });
+    } else {
+      res.status(201).json({
+        status: true,
+        product,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };

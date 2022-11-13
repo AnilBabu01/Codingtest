@@ -25,13 +25,12 @@ exports.getProducts = async (req, res, next) => {
     .filter();
 
   let products = await apiFeatures.query;
-  let filteredProductsCount = products.length;
 
   // products = await apiFeatures.query;
 
   res.status(200).json({
     status: true,
-    filteredProductsCount,
+    length: products.length,
     products,
   });
 };

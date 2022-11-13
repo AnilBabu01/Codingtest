@@ -11,5 +11,5 @@ router.post(
   authorizeRoles("admin"),
   newProduct
 );
-router.route("/getproducts").get(getProducts);
+router.route("/getAllproducts").get(getProducts);
 module.exports = router;

@@ -1,0 +1,77 @@
+.input-div1 {
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+   
+  }
+  
+  .input-div1 input {
+    border: none;
+    background-color: #f1f1f1;
+    width: 320px;
+    margin-left: 10px;
+    font-size: 17px;
+    
+   
+  }
+  .input-div1 input:focus {
+    outline: none;
+  }
+  
+  .reg-div1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .showpassworddsignup{
+    position: absolute;
+    list-style: none;
+    color: rgb(137,87,229);
+    left: 90%;
+  }
+  .showpassworddsignup1{
+    position: absolute;
+    list-style: none;
+    color: rgb(137,87,229);
+    left: 59%;
+  }
+  
+  
+  
+  .reg-disable{
+    width: 100%;
+    background-color: #9e9ece;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     height: 34px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .reg-not-sable{
+    width: 100%;
+    background-color: #9e9ece;
+     
+      color: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+       height: 34px;
+      border-radius: 5px;
+      border: none;
+      font-weight: 600;
+      font-size: 17px;
+  }
+  
+  

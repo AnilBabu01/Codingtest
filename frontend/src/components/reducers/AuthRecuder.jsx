@@ -5,6 +5,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/AuthContants";
 
@@ -30,6 +31,12 @@ export const authReducer = (state = { user: {} }, action) => {
         isRegisterGoLogin: true,
         loading: false,
         data: action.payload,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: false,
+        loading: false,
       };
 
     case LOGIN_FAIL:

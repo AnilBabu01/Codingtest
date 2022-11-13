@@ -20,8 +20,10 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 const user = require("./routes/auth");
 const product = require("./routes/product");
+const order = require("./routes/order");
 app.use("/api/auth", user);
 app.use("/api", product);
+app.use("/api", order);
 // for check apis
 app.get("/api", async (req, res) => {
   try {

@@ -43,18 +43,11 @@ const productSchema = new mongoose.Schema({
       message: "Please select correct category for product",
     },
   },
-  seller: {
-    type: String,
-    required: [true, "Please enter product seller"],
-  },
+
   stock: {
     type: Number,
     required: [true, "Please enter product stock"],
     maxLength: [5, "Product name cannot exceed 5 characters"],
-    default: 0,
-  },
-  numOfReviews: {
-    type: Number,
     default: 0,
   },
 
@@ -62,10 +55,7 @@ const productSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  createdAt: { type: Date, expires: "1m", default: Date.now },
 });
 
 module.exports = mongoose.model("Product", productSchema);

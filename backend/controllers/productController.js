@@ -16,7 +16,7 @@ exports.newProduct = async (req, res, next) => {
   }
 };
 
-// Get all products
+// Get all products api/getproducts?keyword=apple
 exports.getProducts = async (req, res, next) => {
   const productsCount = await Product.countDocuments();
 

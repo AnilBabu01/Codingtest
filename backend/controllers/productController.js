@@ -18,21 +18,25 @@ exports.newProduct = async (req, res, next) => {
 
 // Get all products api/getproducts?keyword=apple
 exports.getProducts = async (req, res) => {
-  const productsCount = await Product.countDocuments();
+  try {
+    const productsCount = await Product.countDocuments();
 
-  const apiFeatures = new APIFeatures(Product.find(), req.query)
-    .search()
-    .filter();
+    const apiFeatures = new APIFeatures(Product.find(), req.query)
+      .search()
+      .filter();
 
-  let products = await apiFeatures.query;
+    let products = await apiFeatures.query;
 
-  // products = await apiFeatures.query;
+    // products = await apiFeatures.query;
 
-  res.status(200).json({
-    status: true,
-    length: products.length,
-    products,
-  });
+    res.status(200).json({
+      status: true,
+      length: products.length,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // get single product

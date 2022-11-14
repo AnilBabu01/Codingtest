@@ -24,7 +24,7 @@ export const getProducts =
 
       let link = `${process.env.REACT_APP_URL}/api/getAllproducts`;
       if (category) {
-        link = `${process.env.REACT_APP_URL}/api/getAllproducts?category=${category}`;
+        link = `${process.env.REACT_APP_URL}/api/getAllproducts?category=${category}&price[gte]=1&price[lte]=${price}`;
       }
       const { data } = await axios.get(link);
 

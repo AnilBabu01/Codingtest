@@ -1,0 +1,21 @@
+.mainshippingdiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 8rem;
+}
+
+.maindon-order-div{
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.maindon-order-div button{
+    border: navajowhite;
+    padding: 2px;
+    padding-left: 2rem;
+    border-radius: 5px;
+    padding-right: 2rem;
+    color: white;
+    background-color: #51c622;
+}

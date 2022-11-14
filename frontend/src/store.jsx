@@ -8,11 +8,18 @@ import {
   productDetailsReducer,
 } from "./components/reducers/ProductReducer";
 import { cartReducer } from "./components/reducers/CartReducer";
+
+import {
+  newOrderReducer,
+  myOrdersReducer,
+} from "./components/reducers/OrderReducer";
 const reducer = combineReducers({
   auth: authReducer,
   products: productsReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
 });
 
 let initialState = {
@@ -21,6 +28,9 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
   },
+  shippingInfo: localStorage.getItem("shippingInfo")
+    ? JSON.parse(localStorage.getItem("shippingInfo"))
+    : {},
 };
 const middlware = [thunk];
 const store = createStore(

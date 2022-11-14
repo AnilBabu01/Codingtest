@@ -3,53 +3,60 @@ const Product = require("../models/product");
 
 // Create a new order   =>  /api/order/new
 exports.getProducts = async (req, res, next) => {
-  const productsCount = await Product.countDocuments();
+  try {
+    const productsCount = await Product.countDocuments();
 
-  const apiFeatures = new APIFeatures(Product.find(), req.query)
-    .search()
-    .filter();
+    const apiFeatures = new APIFeatures(Product.find(), req.query)
+      .search()
+      .filter();
 
-  let products = await apiFeatures.query;
-  let filteredProductsCount = products.length;
+    let products = await apiFeatures.query;
+    let filteredProductsCount = products.length;
 
-  // products = await apiFeatures.query;
+    // products = await apiFeatures.query;
 
-  res.status(200).json({
-    status: true,
-    filteredProductsCount,
-    products,
-  });
+    res.status(200).json({
+      status: true,
+      filteredProductsCount,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.newOrder = async (req, res) => {
-  console.log("ordrer api is working");
-  const {
-    orderItems,
-    shippingInfo,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
-  } = req.body;
+  try {
+    const {
+      orderItems,
+      shippingInfo,
+      itemsPrice,
+      taxPrice,
+      shippingPrice,
+      totalPrice,
+    } = req.body;
 
-  const order = await Order.create({
-    orderItems,
-    shippingInfo,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
-    user: req.user._id,
-  });
-  if (orderItems) {
-    order.orderItems.forEach(async (item) => {
-      await updateStock(item.product, item.quantity);
+    const order = await Order.create({
+      orderItems,
+      shippingInfo,
+      itemsPrice,
+      taxPrice,
+      shippingPrice,
+      totalPrice,
+      user: req.user._id,
     });
+    if (orderItems) {
+      order.orderItems.forEach(async (item) => {
+        await updateStock(item.product, item.quantity);
+      });
+    }
+    res.status(200).json({
+      success: true,
+      order,
+    });
+  } catch (error) {
+    console.log(error);
   }
-  res.status(200).json({
-    success: true,
-    order,
-  });
 };
 
 // update Stock

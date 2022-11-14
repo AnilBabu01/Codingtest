@@ -48,6 +48,21 @@ const Navbar = () => {
             </>
           )}
 
+          {userrole === "user" && (
+            <>
+              <li onClick={() => setisMobile(false)}>
+                <NavLink
+                  to="/myorder"
+                  className={({ isActive }) =>
+                    isActive ? style.active : style.home
+                  }
+                >
+                  Myorder
+                </NavLink>
+              </li>
+            </>
+          )}
+
           {userrole === "admin" && (
             <>
               <li onClick={() => setisMobile(false)}>
